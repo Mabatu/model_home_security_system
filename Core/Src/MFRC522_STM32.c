@@ -228,13 +228,14 @@ uint8_t waitcardRemoval (MFRC522_t *dev){
 uint8_t waitcardDetect (MFRC522_t *dev){
 	atqa[0] = atqa[1] = 0;
 	USER_LOG("Waiting for the card...");
-	while (1){
+	//while (1){
 	    if (MFRC522_RequestA(dev, atqa) == STATUS_OK) {
 	    	USER_LOG("Card detected");
 	        return STATUS_OK;
 	    }
 	    HAL_Delay(100);	// Poll every 100ms to check if card is  present
-	}
+	//}
 }
+
 
 
