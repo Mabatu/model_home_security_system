@@ -216,13 +216,13 @@ uint8_t MFRC522_ReadUid(MFRC522_t *dev, uint8_t *uid) {  // Output: uid[4]
 
 uint8_t waitcardRemoval (MFRC522_t *dev){
     USER_LOG("Waiting for card removal...");
-    while (1) {
+    //while (1) {
         if (MFRC522_RequestA(dev, atqa) != STATUS_OK) {
         	USER_LOG("Card removed");
             return STATUS_OK; // Card removed, return success
         }
         HAL_Delay(100); // Poll every 100ms to check if card is still present
-    }
+    //}
 }
 
 uint8_t waitcardDetect (MFRC522_t *dev){
@@ -236,6 +236,7 @@ uint8_t waitcardDetect (MFRC522_t *dev){
 	    HAL_Delay(100);	// Poll every 100ms to check if card is  present
 	//}
 }
+
 
 
 
