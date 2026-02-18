@@ -28,6 +28,8 @@
 #define CS_Pin GPIO_PIN_0
 #define RESET_GPIO_Port GPIOB
 #define RESET_Pin GPIO_PIN_1
+
+#define AUTHORIZED_USERS 2
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,6 +58,10 @@ SPI_HandleTypeDef hspi1;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
+uint32_t oat_hash(const char *s, size_t len);
+
+bool checkHashes(uint32_t readUID);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
