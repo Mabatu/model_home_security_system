@@ -222,6 +222,15 @@ uint32_t oat_hash(const char *s, size_t len){
 
     return h;
 }
+bool checkHashes(uint32_t readUID){
+	for (int i = 0; i < AUTHORIZED_USERS; i++){
+		if(readUID == hashes[i]){
+			return true;
+		}
+	}
+	return false;
+}
+
 /**
   * @brief System Clock Configuration
   * @retval None
