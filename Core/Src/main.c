@@ -157,7 +157,9 @@ int main(void)
 	  }
 	  if (waitcardDetect(&rfID) == STATUS_OK){
 		  if (MFRC522_ReadUid(&rfID, uid) == STATUS_OK){
-			  if ((uid[0] == 0x09) && (uid[1] == 0xDB) &&(uid[2] == 0xF8) &&(uid[3] == 0x04)){
+			  //If card UID is authorized, grant access
+			  uint32_t hash = oat_hash((const char*)uid, 4);
+			  if (checkHashes(hash) == true){
 				  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET);
 				  LOCKED = false;
 				  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, LOCKED);
