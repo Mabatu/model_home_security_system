@@ -70,6 +70,8 @@ bool checkHashes(uint32_t readUID);
 /* USER CODE BEGIN 0 */
 uint8_t uid[4];
 
+uint32_t hashes [AUTHORIZED_USERS] = {0x639db36a, 0xf74596d0};
+
 MFRC522_t rfID = {&hspi1, CS_GPIO_Port, CS_Pin, RESET_GPIO_Port, RESET_Pin};
 bool LOCKED = true;
 /* USER CODE END 0 */
