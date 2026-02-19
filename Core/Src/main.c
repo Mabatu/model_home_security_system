@@ -75,11 +75,17 @@ bool checkHashes(uint32_t readUID);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+//Array to store 4 bytes of the UID
 uint8_t uid[4];
 
+//Hashes from authorized UID
 uint32_t hashes [AUTHORIZED_USERS] = {0x639db36a, 0xf74596d0};
 
+//MFRC522 object initialization with all pins declared
 MFRC522_t rfID = {&hspi1, CS_GPIO_Port, CS_Pin, RESET_GPIO_Port, RESET_Pin};
+
+//Boolean variable to store system state: by default, the system is locked
 bool LOCKED = true;
 /* USER CODE END 0 */
 
