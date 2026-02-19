@@ -24,12 +24,16 @@
 #include "stdbool.h"
 #include "MFRC522_STM32.h"
 #include "lcd.h"
+
+//GPIO port and pins for RFID interfacing
 #define CS_GPIO_Port GPIOB
 #define CS_Pin GPIO_PIN_0
 #define RESET_GPIO_Port GPIOB
 #define RESET_Pin GPIO_PIN_1
 
+//Number of authorized users
 #define AUTHORIZED_USERS 2
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,8 +62,11 @@ SPI_HandleTypeDef hspi1;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
+
+//Hashing function declaration function
 uint32_t oat_hash(const char *s, size_t len);
 
+//Verify the read hashes against the authorized hashes.
 bool checkHashes(uint32_t readUID);
 
 /* USER CODE BEGIN PFP */
